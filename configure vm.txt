@@ -1,0 +1,55 @@
+1. DB2 utils:
+sudo apt-get update 
+sudo apt install -y openjdk-8-jre-headless 
+sudo apt install -y openjdk-8-jdk-headless 
+sudo apt install -y unzip
+sudo apt-get install -y libstdc++6
+sudo apt-get install -y libstdc++5
+sudo apt-get install -y ksh
+sudo apt-get install -y libaio1
+sudo apt-get install -y rpm
+sudo dpkg --add-architecture i386
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install -y libpam0g:i386
+sudo apt-get install -y binutils
+
+2. UBUNTU x2go:
+sudo apt-get install python-software-properties
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:x2go/stable
+sudo apt-get update
+#sudo apt-get install x2goclient
+sudo apt-get -y install x2goserver x2goserver-xsession
+sudo add-apt-repository ppa:ubuntu-mate-dev/ppa
+sudo apt-get update
+sudo apt-get -y install ubuntu-mate-core ubuntu-mate-desktop
+
+3. Install DB2
+scp -i wan-gateway-example.pem ../Verizon\ POC/v11.1_linuxx64_server_t.tar.gz ubuntu@ec2-18-219-234-12.us-east-2.compute.amazonaws.com:/tmp
+mv /tmp/v11.1_linuxx64_server_t.tar.gz ~
+tar xfz v11.1_linuxx64_server_t.tar.gz
+sudo server_t/db2setup
+. /home/ubuntu/sqllib/db2profile (/home/db2inst1/sqllib/db2profile)
+
+
+4. scp -i wan ... tables.sql
+su - db2inst1
+db2 -stvf /tmp/tables.sql
+
+extract data
+unzip \*.zip
+
+su - db2inst1
+./load.sh
+
+
+
+select count (*) from BMGVZP.INVOICE_LIST_T
+select count (*) from BMGVZP.CURRENT_BAN_T    
+select count (*) from BMGVZP.ACCT_SUM_T       
+select count (*) from BMGVZP.MASTER_ACCT_NO_T 
+select count (*) from BMGVZP.ORIGIN_SYSTEM_T 
+select count (*) from BMGVZP.OPCO_MASTER_T   
+select count (*) from BMGVZP.PAYMENT_INELIGIBLE_T  
+select count (*) from BMGVZP.SHIELD_XREF_T   
+select count (*) from BMGVZP.COLUMBIA_STATUS_T
