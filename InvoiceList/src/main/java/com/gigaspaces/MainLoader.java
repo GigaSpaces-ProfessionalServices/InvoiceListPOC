@@ -190,28 +190,20 @@ public class MainLoader {
                                 ColumbiaStatusT columbiaStatusT = cst.get(account.getAcctSumTCompositeId().getMan() + account.getAcctSumTCompositeId().getOrigSystemId() + account.getAcctSumTCompositeId().getBan() + account.getAcctSumTCompositeId().getBillDate() + account.getInvoiceNbr());
                                 Set<PaymentIneligibleT> paymentIneligibleT = inelg.get(invoice.getMan() + invoice.getBan() + invoice.getOrigSystemId());
 
-                                if ("07".equals(invoice.getOrigSystemId())
-                                        && ('Y' == invoice.getStandAloneInd() || !invoice.getMan().equals(invoice.getBan())
+                                if ("07".equals(invoice.getOrigSystemId()) && ('Y' == invoice.getStandAloneInd()
+                                        || !invoice.getMan().equals(invoice.getBan())
                                         || !ABANS.contains(invoice.getInvoiceListTCompositeId().getAban()))) {
 
                                     sc1.setStartPage(903);
                                 } else if (!ORIG_SYSTEM_IDS_FOR_INVOICE_1.contains(invoice.getOrigSystemId())) {
-
-                                    if (originSystemT != null) {
-                                        sc1.setStartPage(originSystemT.getPortalStartPage());
-                                    }
-                                } else if (masterAcctNoT != null) {
-                                    if  (masterAcctNoT.getInternationalInd() == null) {
-                                        sc1.setStartPage(5200);
-                                    } else if (masterAcctNoT.getInternationalInd() == 'Y' && !ORIG_SYSTEM_IDS_FOR_INVOICE_2.contains(invoice.getOrigSystemId())) {
-                                        sc1.setStartPage(0);
-                                    }
+                                    sc1.setStartPage(originSystemT.getPortalStartPage());
+                                } else if (masterAcctNoT.getInternationalInd() == null) {
+                                    sc1.setStartPage(5200);
+                                } else if (masterAcctNoT.getInternationalInd() == 'Y' && !ORIG_SYSTEM_IDS_FOR_INVOICE_2.contains(invoice.getOrigSystemId())) {
+                                    sc1.setStartPage(0);
                                 } else if ("PO".equals(invoice.getOrigSystemId())) {
-
                                     if (opcoMasterT != null && opcoMasterT.getOpco() == null) {
-                                        if (originSystemT != null) {
-                                            sc1.setStartPage(originSystemT.getPortalStartPage());
-                                        }
+                                        sc1.setStartPage(originSystemT.getPortalStartPage());
                                     } else if (!invoice.getMan().equals(invoice.getBan())) {
                                         if (opcoMasterT != null) {
                                             sc1.setStartPage(opcoMasterT.getPortalStartPage());
@@ -221,15 +213,13 @@ public class MainLoader {
                                             sc1.setStartPage(opcoMasterT.getPortalStartPageMan());
                                         }
                                     }
-                                } else if (originSystemT != null && 'I' == originSystemT.getPortalLink()) {
+                                } else if ('I' == originSystemT.getPortalLink()) {
                                     sc1.setStartPage(originSystemT.getPortalStartPage());
                                 } else {
                                     sc1.setStartPage(5200);
                                 }
 
-                                if (masterAcctNoT != null) {
-                                    sc1.setPartialInd(masterAcctNoT.getManPartialInd());
-                                }
+                                sc1.setPartialInd(masterAcctNoT.getManPartialInd());
 
                                 if (account.getPayByDate() == null || account.getPayByDate().trim().equals("0000-00-00")) {
                                     sc1.setDueDate("9999-12-31");
@@ -279,9 +269,6 @@ public class MainLoader {
         logger.info("Step 2 result size : " + sc1s.size());
 
         gigaspace.writeMultiple(sc1s.toArray());
-
-
-
 
     }
 
