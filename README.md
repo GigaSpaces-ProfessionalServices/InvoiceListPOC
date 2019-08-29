@@ -16,3 +16,8 @@ Application is a initial loader using Hibernate, that loads all tables from DB2 
  - start IE (gigaspaces-insightedge-enterprise-14.5.0/bin/gs.sh demo)
  - build project (mvn clean package)
  - deploy as pu
+
+# Run Tableau
+ - login to instance i-0ca04a53d46a78896
+ - run script 'run tableau'
+ - configure connection according to documentation https://docs.gigaspaces.com/14.5/dev-java/tableau-integration.html
