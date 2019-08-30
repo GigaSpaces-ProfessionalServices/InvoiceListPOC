@@ -13,7 +13,8 @@ Application is a initial loader using Hibernate, that loads all tables from DB2 
  - login as db2inst1 (su - db2inst1)
  - start db2 (db2start)
  - login as ubuntu
- - start IE (gigaspaces-insightedge-enterprise-14.5.0/bin/gs.sh demo)
+ - start IE ('gigaspaces-insightedge-enterprise-14.5.0/bin/gs.sh demo'  or
+     'gigaspaces-insightedge-enterprise-14.5.0/bin/gs-agent.sh --manager-local --gsc=2' if you are going to use rest controller
  - build project (mvn clean package)
  - deploy as pu
 
@@ -25,3 +26,8 @@ Application is a initial loader using Hibernate, that loads all tables from DB2 
  - configure connection according to documentation https://docs.gigaspaces.com/14.5/dev-java/tableau-integration.html
 
 NOTE: set correct public hostname i-0d9bab1829eda6111 in InvoiceList/src/main/resources/META-INF/spring/pu.xml and tableau connector
+
+# Run rest controller 
+ - build module plugin
+ - put jar file to gigaspaces-insightedge-enterprise-14.5.0/bin/lib/platform/manager/plugins/
+ - do GET request to 'hostname:8090/v2/controller/getAcctSumTs?appName=invoice-loader&typeName=<full_class_name>' e.g. com.gigaspaces.pojos.LST
