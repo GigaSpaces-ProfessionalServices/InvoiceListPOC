@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.gigaspaces</groupId>
-  <artifactId>InvoiceList</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <groupId>com.gigaspaces</groupId>
+    <artifactId>InvoiceList</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  <name>InvoiceList</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <gsType>PU</gsType>
-    <gsVersion>14.5.0</gsVersion>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <skipTests>true</skipTests>
-    <xap.version>14.5.0</xap.version>
-  </properties>
+    <name>InvoiceList</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <gsType>PU</gsType>
+        <gsVersion>14.5.0</gsVersion>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <skipTests>true</skipTests>
+        <xap.version>14.5.0</xap.version>
+    </properties>
 
-  <repositories>
-    <repository>
-      <id>org.openspaces</id>
-      <url>http://maven-repository.openspaces.org</url>
-    </repository>
-    <repository>
-      <id>ibm</id>
-      <url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
-    </repository>
-  </repositories>
+    <packaging>pom</packaging>
+    <modules>
+        <module>common</module>
+        <module>plugin</module>
+        <module>pu</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>org.openspaces</id>
+            <url>http://maven-repository.openspaces.org</url>
+        </repository>
+        <repository>
+            <id>ibm</id>
+            <url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -78,41 +85,11 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-orm</artifactId>-->
-            <!--<version>5.0.2.RELEASE</version>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-orm</artifactId>-->
+        <!--<version>5.0.2.RELEASE</version>-->
         <!--</dependency>-->
 
     </dependencies>
 
-  <build>
-    <finalName>invoice-loader</finalName>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.2</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <!--<minimizeJar>true</minimizeJar>-->
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
-        <configuration>
-          <source>8</source>
-          <target>8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

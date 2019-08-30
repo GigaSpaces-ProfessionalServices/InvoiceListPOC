@@ -1113,42 +1113,4 @@ public class AcctSumT {
         this.acctSumTCompositeId = acctSumTCompositeId;
     }
 
-
-//    @Override
-//    public String getMan() {
-//        return acctSumTCompositeId.getMan();
-//    }
-//
-//    @Override
-//    public String getAban() {
-//        return acctSumTCompositeId.getAban();
-//    }
-//
-//    @Override
-//    public String getBan() {
-//        return acctSumTCompositeId.getBan();
-//    }
-//
-//    @Override
-//    public Date getBillDate() {
-//        return acctSumTCompositeId.getBillDate();
-//    }
-//
-//    @Override
-//    public Date getManBillDate() {
-//        return acctSumTCompositeId.getManBillDate();
-//    }
-//
-//    @Override
-//    public String getOrigSystemId() {
-//        return acctSumTCompositeId.getOrigSystemId();
-//    }
-//
-//    @Override
-//    public Integer getVz450SeqNbr() {
-//        return acctSumTCompositeId.getVz450SeqNbr();
-//    }
-//
-
-
 }

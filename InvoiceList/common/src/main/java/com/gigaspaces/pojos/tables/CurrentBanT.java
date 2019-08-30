@@ -2,9 +2,6 @@ package com.gigaspaces.pojos.tables;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
-import com.gigaspaces.pojos.interfaces.HasBan;
-import com.gigaspaces.pojos.interfaces.HasMan;
-import com.gigaspaces.pojos.interfaces.HasOrigSystemId;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -20,7 +17,7 @@ import java.sql.Date;
 @Entity
 @Table(schema = "BMGVZP", name = "CURRENT_BAN_T")
 @SpaceClass
-public class CurrentBanT implements HasMan, HasBan, HasOrigSystemId {
+public class CurrentBanT {
 
     @EmbeddedId
     private CurrentBanTCompositeId currentBanTCompositeId;
@@ -868,17 +865,14 @@ public class CurrentBanT implements HasMan, HasBan, HasOrigSystemId {
         this.currentBanTCompositeId = currentBanTCompositeId;
     }
 
-    @Override
     public String getBan() {
         return currentBanTCompositeId.getBan();
     }
 
-    @Override
     public String getMan() {
         return currentBanTCompositeId.getMan();
     }
 
-    @Override
     public String getOrigSystemId() {
         return currentBanTCompositeId.getOrigSystemId();
     }
