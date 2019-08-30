@@ -23,3 +23,5 @@ Application is a initial loader using Hibernate, that loads all tables from DB2 
  password: Brb;@NT2qr
  - run script 'run tableau'
  - configure connection according to documentation https://docs.gigaspaces.com/14.5/dev-java/tableau-integration.html
+
+NOTE: set correct public hostname i-0d9bab1829eda6111 in InvoiceList/src/main/resources/META-INF/spring/pu.xml and tableau connector
